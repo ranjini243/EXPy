@@ -1,0 +1,24 @@
+# Problem 13: Valid Parentheses Write a function that determines whether a given string containing only 
+# the characters '(', ')', '{', '}', '[', and ']' is valid. A valid string must have matching opening and 
+# closing parentheses. For example, "{[()]}" is valid, but "([)]" is not
+
+def parentheses (braces):
+    stack = []
+    for parentheses in braces:
+        if parentheses in '({[':
+            stack.append(parentheses)
+
+        
+        elif parentheses in ')}]':
+            if not stack:
+                return "there is no matching parentheses"
+            last_parentheses = stack.pop()
+            if parentheses == ')' and last_parentheses != '(' or parentheses == '}' and last_parentheses != '{' or parentheses == ']' and last_parentheses != '[':
+                return False
+    return not stack
+
+
+print(parentheses("{[()]}"))
+print(parentheses("([)]")) 
+print (parentheses("(){}[]"))
+print(parentheses("[{()]"))
