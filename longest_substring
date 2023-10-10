@@ -1,0 +1,23 @@
+def longest_sub_string(string):
+    last_index = {}
+    start_index = 0
+    maximum_length = 0
+    maximum_substring = ""
+    
+    for i in range(len(string)):
+        if string[i] in last_index and last_index[string[i]] >= start_index:
+            start_index = last_index[string[i]] + 1
+
+        last_index[string[i]] = i
+
+        if i - start_index + 1 > maximum_length:
+            maximum_length = i - start_index + 1
+            maximum_substring = string[start_index:i + 1]
+
+    return maximum_length, maximum_substring
+
+length, substring = longest_sub_string("abcabcbbcdadd")
+print("Length of Longest Substring:", length)
+print("Longest Substring:", substring)
+
+
