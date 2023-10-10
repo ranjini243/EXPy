@@ -1,0 +1,39 @@
+# Problem 18: Longest Palindromic Substring Write a function that finds the longest
+# palindromic substring in a given string. For example, in the string "babad," the
+# longest palindromic substring is "bab" or "aba."
+
+
+def palindrome_check():
+    string = "A man, a plan, a canal, Panama!"
+    string = ''.join(c.lower() for c in string if c.isalnum())
+    stack = ""
+    length_of_string = len(string)
+
+    while length_of_string > 0:
+        stack = stack + string[length_of_string-1]
+        length_of_string = length_of_string-1
+    print(stack)
+
+    if string == stack:    
+        start_index=0   
+        maximum_length = 0
+        maximum_substring = ""
+        final_temp = {}
+        
+        for char in range (len(stack)):
+            if stack[char] in final_temp and final_temp[stack[char]] >=start_index:
+                start_index = final_temp[stack[char]] +1
+
+            final_temp [stack[char]] = char
+
+            if char -start_index +1 > maximum_length:
+                maximum_length = char - start_index+1
+                maximum_substring = string[start_index:char+1]
+        print(maximum_length , maximum_substring)
+
+    else:
+        print("not a palindrome")
+
+palindrome_check()
+
+
