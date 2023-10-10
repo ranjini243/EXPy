@@ -1,0 +1,31 @@
+# Problem 15: Reverse Words in a String Write a function that reverses the words in 
+# a given string while preserving the order of words. For example, if the input is 
+# "Hello World," the output should be "World Hello."
+
+def rotation(arr):
+    n = len(arr) 
+    rotatation = [0]*n
+    
+    for i in range(n):
+        rotatation[(i + 6) % n] = arr[i]
+    rotated_string =''.join(rotatation)
+    
+    return rotated_string
+
+rotationable_list = "Hello world "
+result = rotation(rotationable_list)
+print(result)
+
+# import re
+# text = 'hello world'
+# x = re.search('\s' , text)
+# x1 = x.start()
+# print("1st space position is:" , x.start())
+# print(x1)
+#always multiply by x1+1 = 6, in above code--rotatation[(i + 6) % n] = arr[i]
+ 
+
+
+
+
+
