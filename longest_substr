@@ -1,0 +1,26 @@
+# Problem 9: Longest Substring Without Repeating Characters Write a function that finds the length of the longest
+#  substring without repeating characters in a given string. For example, for the input "abcabcbb,"
+#   the output should be 3 (as "abc" is the longest substring).
+
+
+def longest_sub_string(string):
+    stack = {}
+    start_index=0   
+    maximum_length = 0
+    maximum_substring = ""
+    
+    for char in range (len(string)):
+        if string[char] in stack and stack[string[char]] >=start_index:
+            start_index = stack[string[char]] +1
+
+        stack [string[char]] = char
+
+        if char -start_index +1 > maximum_length:
+            maximum_length = char - start_index+1
+            maximum_substring = string[start_index:char+1]
+
+    return maximum_length , maximum_substring 
+
+length, substring = longest_sub_string("abcabcbbcdaddb")
+print("longest substring is:", length)
+print("Longest substring :", substring)
