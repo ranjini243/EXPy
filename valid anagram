@@ -1,0 +1,26 @@
+# Problem 17: Valid Anagram (Follow-up) Enhance your previous anagram checker 
+# function (Problem 5) to handle unicode characters and account for character case.
+# For example, "anagram" and "nagaram" should still be considered valid anagrams.
+
+
+def anagram (string1 , string2):
+    n1 = list(string1)
+    n2 = list(string2)
+
+    if len(string1) != len(string2):
+        return " not anagram"
+    elif len(string1) == len(string2):
+        for i in range(len(string1)):
+            for j in range(0, len(string1)-i-1):  
+                if n1[j] > n1[j+1]:
+                    n1[j], n1[j+1] = n1[j+1], n1[j]
+    
+    if n1 == n2:
+        print("....") 
+    return True
+   
+string1 = "anagram"
+string2 = "nagaram"
+result = anagram(string1 , string2)
+print(result)  
+print(f"given strings are valid anagram::" , {string1} , "and" ,  {string2})
