@@ -1,0 +1,27 @@
+def target():
+    array = [1, 4, 5, 6, 7, 8, 10]
+    target_sum = 15
+    n = len(array)
+    sub_set_alpos = []
+    final_stack = []
+
+    for start in range(n):
+        for end in range(start + 1, n + 1):
+            sub_set_alpos.append(array[start:end])
+    print(sub_set_alpos)
+
+    for subset in sub_set_alpos:
+        if sum(subset) == target_sum:
+            final_stack.append(subset)
+
+    if final_stack:
+        print("Subsets with sum equal to the target:")
+        for subset in final_stack:
+            print(subset)
+            
+    else:
+        print("No subsets with sum equal to the target found.")
+
+    return True
+
+target()
