@@ -1,0 +1,38 @@
+# Problem 14: Find the Intersection of Two Arrays Given two arrays, write a function to compute their intersection. 
+# The result should not contain duplicates and should be sorted in ascending order.
+
+def intersection(a, b):
+    n1 = len(a)
+    n2 = len(b)
+
+    for i in range(n1 - 1):
+        for j in range(0, n1 - i - 1):
+            if a[j] > a[j + 1]:
+                a[j], a[j + 1] = a[j + 1], a[j]
+                print(a)
+
+    for i in range(n2 - 1):
+        for j in range(0, n2 - i - 1):
+            if b[j] > b[j + 1]:
+                b[j], b[j + 1] = b[j + 1], b[j]
+                print(b)
+
+    temp = []
+    i, j = 0, 0
+
+    while i < n1 and j < n2:
+        if a[i] == b[j]:
+            temp.append(a[i])
+            i += 1
+            j += 1
+        elif a[i] < b[j]:
+            i += 1
+        else:
+            j += 1
+
+    return temp
+
+a = [1, 2, 34, 45, 5]
+b = [4, 5, 6, 7, 34, 45, 7]
+result = intersection(a, b)
+print(result)
